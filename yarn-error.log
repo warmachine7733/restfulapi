@@ -1,0 +1,46 @@
+Arguments: 
+  /home/peoplelink/.nvm/versions/node/v9.0.0/bin/node /usr/local/bin/yarn add express
+
+PATH: 
+  /home/peoplelink/.nvm/versions/node/v9.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  9.0.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: connect ENETUNREACH 104.16.24.35:443 - Local (0.0.0.0:0)
+      at Object._errnoException (util.js:1031:13)
+      at _exceptionWithHostPort (util.js:1052:20)
+      at internalConnect (net.js:977:16)
+      at emitLookup (net.js:1119:7)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:95893:28
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:95802:13
+      at RawTask.module.exports.RawTask.call (/usr/local/lib/node_modules/yarn/lib/cli.js:77396:19)
+      at flush (/usr/local/lib/node_modules/yarn/lib/cli.js:77478:29)
+      at _combinedTickCallback (internal/process/next_tick.js:131:7)
+      at process._tickCallback (internal/process/next_tick.js:180:9)
+
+npm manifest: 
+  {
+    "name": "restful-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
