@@ -47,7 +47,7 @@ module.exports = {
     res.status(200).json({ success: true });
   },
 
-  //VALIDATION:PENDING
+  //VALIDATION:DONE
   getUserCar: async (req, res, next) => {
     try {
       const { userId } = req.value.params;
@@ -58,7 +58,7 @@ module.exports = {
       console.log(error);
     }
   },
-
+  //VALIDATION:DONE
   newUserCar: async (req, res, next) => {
     try {
       const { userId } = req.value.params;
