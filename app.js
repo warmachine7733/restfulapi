@@ -7,7 +7,10 @@ mongoose.Promise = global.Promise;
 
 const url = "mongodb://localhost/restproject";
 const opts = { useNewUrlParser: true };
-mongoose.connect(url,opts);
+mongoose.connect(
+  url,
+  opts
+);
 
 //for .env file read
 require("dotenv").config();
@@ -25,26 +28,36 @@ app.use(bodyParser.json());
 app.use("/users", users);
 
 //catch 404 error and forward to error handler function
-app.use((req, res, next) => {
-  const err = new Error("Not Found");
-  err.status = 404;
-  next(err);
-});
+// app.use((req, res, next) => {
+//   const err = new Error("Not Found");
+//   err.status = 404;
+//   next(err);
+// });
+
+// //error handler function
+// app.use((req, res, err, next) => {
+//   const error = err;
+//   if(err){
+//     console.log("error")
+
+//   }
+//    res.sendStatus(404).json(err)
+//   console.log("error is", error);
+// });
 
 //error handler function
 app.use((req, res, err, next) => {
+  const error = app.get("env") === "developement" ? err : {};
+  const status = err.status || status;
 
-const error = app.get('env') === 'developement' ? err : {};
-const status = err.status || status;
+  //client
+  res.status(status).json({
+    error: {
+      message: error.message
+    }
+  });
 
-//client 
-res.status(status).json({
-  error:{
-    message:error.message
-  }
-})
-
-console.log(err)
+  console.log(err);
 });
 
 //server
