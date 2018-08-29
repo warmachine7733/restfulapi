@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
+const helmet = require('helmet');
 
 const url = "mongodb://localhost/restproject";
 const opts = { useNewUrlParser: true };
@@ -16,8 +17,10 @@ mongoose.connect(
 require("dotenv").config();
 
 const app = express();
+app.use(helmet())
 
-//getting router
+//getting routes
+const cars = require("./routes/cars");
 const users = require("./routes/users");
 
 //middlewares
@@ -25,6 +28,7 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 
 //using routes
+app.use("/cars",cars)
 app.use("/users", users);
 
 //catch 404 error and forward to error handler function
