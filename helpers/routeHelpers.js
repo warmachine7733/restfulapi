@@ -39,7 +39,9 @@ module.exports = {
     userSchema: Joi.object().keys({
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
-      email: Joi.string().email().required()
+      email: Joi.string()
+        .email()
+        .required()
     }),
     userOptionSchema: Joi.object().keys({
       firstName: Joi.string(),
@@ -52,15 +54,17 @@ module.exports = {
       year: Joi.number().required()
     }),
     addCarSchema: Joi.object().keys({
-      seller:Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),  
+      seller: Joi.string()
+        .regex(/^[0-9a-fA-F]{24}$/)
+        .required(),
       make: Joi.string().required(),
       model: Joi.string().required(),
       year: Joi.number().required()
     }),
-    patchCarSchema:Joi.object().keys({
-     make:Joi.string(),
-     model:Joi.string(),
-     year:Joi.string()
+    patchCarSchema: Joi.object().keys({
+      make: Joi.string(),
+      model: Joi.string(),
+      year: Joi.string()
     }),
     idSchema: Joi.object().keys({
       param: Joi.string().regex(/^[0-9a-fA-F]{24}$/)

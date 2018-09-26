@@ -3,21 +3,27 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-mongoose.Promise = global.Promise;
-const helmet = require('helmet');
+// mongoose.Promise = global.Promise;
+const helmet = require("helmet");
 
-const url = "mongodb://localhost/restproject";
+const url = "mongodb://ds115283.mlab.com:15283/restproject";
 const opts = { useNewUrlParser: true };
+console.log("url is", url);
 mongoose.connect(
   url,
-  opts
+  {
+    auth: {
+      user: "prateekjena7733",
+      password: "home@123"
+    }
+  }
 );
 
 //for .env file read
 require("dotenv").config();
 
 const app = express();
-app.use(helmet())
+app.use(helmet());
 
 //getting routes
 const cars = require("./routes/cars");
@@ -28,7 +34,7 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 
 //using routes
-app.use("/cars",cars)
+app.use("/cars", cars);
 app.use("/users", users);
 
 //catch 404 error and forward to error handler function
